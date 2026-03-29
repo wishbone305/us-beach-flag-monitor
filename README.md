@@ -2,6 +2,12 @@
 
 A GNOME Shell extension that displays live US beach warning flag conditions in your top bar, powered by the [National Weather Service (NWS)](https://www.weather.gov/) alerts API. No API key required.
 
+## Screenshots
+
+![Panel indicator and popup menu](screenshots/demo.png)
+
+![Desktop overview with extension in top bar](screenshots/demo2.png)
+
 ```
 ┌─────────────────────────────────────────┐
 │  🟡 Yellow  📍 Destin, FL               │  ← top bar
@@ -12,7 +18,7 @@ Click to expand:
   Last checked: 08:45 AM
   📍 Destin, FL
   ──────────────────────
-  Open Okaloosa Beach Safety ↗
+  Open Destin, FL Conditions ↗
   Refresh Now
 ```
 
