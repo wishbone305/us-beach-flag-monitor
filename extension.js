@@ -62,11 +62,10 @@ const BeachFlagIndicator = GObject.registerClass(
 
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
-            const openItem = new PopupMenu.PopupMenuItem('Open Okaloosa Beach Safety ↗');
-            openItem.connect('activate', () => {
-                GLib.spawn_command_line_async('xdg-open https://myokaloosa.com/ps/beach-safety');
-            });
-            this.menu.addMenuItem(openItem);
+            // Dynamic link — label and URL update when location changes
+            this._openItem = new PopupMenu.PopupMenuItem('Open Beach Conditions ↗');
+            this._openItem.connect('activate', () => this._openBeachSafety());
+            this.menu.addMenuItem(this._openItem);
 
             const refreshItem = new PopupMenu.PopupMenuItem('Refresh Now');
             refreshItem.connect('activate', () => this._updateFlag());
@@ -83,7 +82,7 @@ const BeachFlagIndicator = GObject.registerClass(
                 this._updateFlag();
             });
 
-            // Update panel label when location name changes (same zone, different name)
+            // Update panel label + menu link when location name changes
             this._nameChangedId = this._settings.connect('changed::location-name', () => {
                 this._updateLocationLabel();
             });
@@ -114,6 +113,15 @@ const BeachFlagIndicator = GObject.registerClass(
         _updateLocationLabel() {
             const name = this._settings.get_string('location-name');
             this._locationItem.label.set_text(`📍 ${name}`);
+            // Keep the menu link in sync with the current location
+            this._openItem.label.set_text(`Open ${name} Conditions ↗`);
+        }
+
+        _openBeachSafety() {
+            const zone = this._settings.get_string('nws-zone');
+            // NWS zone forecast page — works for any US coastal zone code
+            const url = `https://forecast.weather.gov/MapClick.php?zoneid=${zone}`;
+            GLib.spawn_command_line_async(`xdg-open ${url}`);
         }
 
         // ── Timer management ──────────────────────────────────────
