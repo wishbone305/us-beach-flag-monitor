@@ -1,0 +1,10 @@
+/* US Beach Flag Monitor — panel stylesheet */
+
+.beach-flag-label {
+    padding: 0 4px 0 2px;
+    font-size: 0.9em;
+}
+
+.beach-flag-icon {
+    icon-size: 16px;
+}

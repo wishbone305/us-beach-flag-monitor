@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.us-beach-flag-monitor"
+          path="/org/gnome/shell/extensions/us-beach-flag-monitor/">
+
+    <key name="nws-zone" type="s">
+      <default>'FLZ206'</default>
+      <summary>NWS Coastal Zone Code</summary>
+      <description>The NWS coastal zone code used to fetch beach flag alerts (e.g. FLZ206)</description>
+    </key>
+
+    <key name="location-name" type="s">
+      <default>'Destin, FL'</default>
+      <summary>Location Display Name</summary>
+      <description>Human-readable name shown in the panel dropdown</description>
+    </key>
+
+    <key name="refresh-interval" type="i">
+      <default>900</default>
+      <range min="300" max="3600"/>
+      <summary>Refresh Interval (seconds)</summary>
+      <description>How often to poll NWS for updated alerts, in seconds (300–3600)</description>
+    </key>
+
+  </schema>
+</schemalist>

@@ -1,0 +1,9 @@
+{
+  "name": "US Beach Flag Monitor",
+  "description": "Shows live beach flag conditions for any US coastal location via NWS alerts",
+  "uuid": "us-beach-flag-monitor@wishbone305",
+  "version": 1,
+  "shell-version": ["45", "46", "47", "48", "49"],
+  "settings-schema": "org.gnome.shell.extensions.us-beach-flag-monitor",
+  "url": "https://github.com/wishbone305/us-beach-flag-monitor"
+}
